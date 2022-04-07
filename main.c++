@@ -278,7 +278,6 @@ public:
         cin >> t;
         for (int i = 0; i < books.size(); i++)
         {
-            cout << books[i].title << " ";
             if (books[i].title == t)
             {
                 cout << "-----------------------------------------------------------------" << endl;
@@ -690,12 +689,76 @@ int main()
     userdatabase ub;
     professor pt;
 
+    //Some intial users and books added.
+    {
+        user t1;
+        t1.name = "Umam";
+        t1.id = "s1234";
+        t1.password = "Mumam270901";
+        ub.users.push_back(t1);
+
+        user t2;
+        t2.name = "Vishal";
+        t2.id = "s2231";
+        t2.password = "Vishal250802";
+        ub.users.push_back(t2);
+
+        user t3;
+        t3.name = "Indranil";
+        t3.id = "p1234";
+        t3.password = "CS253";
+        ub.users.push_back(t3);
+
+        book b1;
+        b1.title = "Mein-Kampf";
+        b1.author = "Hitler";
+        b1.isbn = "9876543210";
+        b1.publication = "Germany";
+        db.books.push_back(b1);
+
+        book b2;
+        b2.title = "Cengel&Boles";
+        b2.author = "Cengel";
+        b2.isbn = "1234567890";
+        b2.publication = "Mihir";
+        db.books.push_back(b2);
+
+        book b3;
+        b3.title = "CLRS";
+        b3.author = "Cormen";
+        b3.isbn = "1234567980";
+        b3.publication = "Foreign";
+        db.books.push_back(b3);
+
+        book b4;
+        b4.title = "The-fault-in-our-stars";
+        b4.author = "John-Green";
+        b4.isbn = "2134567890";
+        b4.publication = "English";
+        db.books.push_back(b4);
+
+        book b5;
+        b5.title = "Surely-Joking";
+        b5.author = "Richard-Feynman";
+        b5.isbn = "7654321098";
+        b5.publication = "Vintage";
+        db.books.push_back(b5);
+
+        book b6;
+        b6.title = "Physics";
+        b6.author = "Irodov";
+        b6.isbn = "1234560987";
+        b6.publication = "DC";
+        db.books.push_back(b6);
+
+    }
 MainMenu:
     system("cls");
     cout << "------------------------------------------------------" << endl;
     cout << "-----  Welcome to Library Management system ----------" << endl;
     cout << "------------------------------------------------------" << endl;
-    cout << "--------- You are welcome to our library  --------------" << endl;
+    cout << "--------- You are welcome to our library  ------------" << endl;
+    cout << endl;
     cout << "           1. Student" << endl;
     cout << "           2. Professor" << endl;
     cout << "           3. Librarian" << endl;
