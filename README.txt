@@ -1,9 +1,4 @@
-# Library-Management-System-in-cpp
-
-## This repository is for the implementation of Libarary Management System in C++ done under Course - CS253
-
-
-### 1. About the code
+1. About the code
 
     A) The code is written in c++ 14 using the concepts of OOPS. The code uses iostream, vector and algorithm header files. 
 
@@ -45,7 +40,7 @@
 
 
 
-### 2. Interfaces of the code
+2. Interfaces of the code
 
     A) The code has a MainMenu which comes up at the start of the code or can be navigated by other interfaces. The user can select the type of login he/she has to perform. By default the code provides student, professor and librarian access to the code. There is also an option to register as new user.
 
@@ -56,7 +51,7 @@
     D) The exit message contains the credits.
 
 
-### 3. Functionalities provided by the programmer
+3. Functionalities provided by the programmer
 
     A) To Student 
 
@@ -90,7 +85,7 @@
         i) Can see all books
         j) Can see all userPassword
 
-### 4. Instructions for Proper Functioning of the Code
+4. Instructions for Proper Functioning of the Code
 
     a) The librarian can login using password admin password -- Admin1234
     b) The id of the users must contain s at the start of the id number for students. for eg. id = s1234

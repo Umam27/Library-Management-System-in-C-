@@ -2,7 +2,9 @@
 ////        Header         ////
 ///////////////////////////////
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 ///////////////////////////////
@@ -304,7 +306,7 @@ public:
                 cout << "The following book is not available" << endl;
                 cout << "Id of the user who currently have this book - " << books[i].user << endl;
             }
-            cout << "----------------------------------------------------------------------------------------------------------";
+            cout << "----------------------------------------------------------------------------------------------------------"<< endl;
         }
         return;
     }
@@ -504,7 +506,7 @@ public:
         int flag = 0;
         for (int i = 0; i < n; i++)
         {
-            cout << "User #" << i + 1 << " : ";
+            cout << "User #" << i + 1 << endl;
             cout << "The name of the user is - " << users[i].name << endl;
             cout << "The id of the user is - " << users[i].id;
             cout << "----------------------------------------------------------------------------------------------------------" << endl;
@@ -594,7 +596,7 @@ public:
 ////     Student class      ////
 ////////////////////////////////
 
-class student
+class student : user
 {
 public:
     user u;
@@ -1142,7 +1144,7 @@ MainMenu:
         cout << "Press 11 to see all users" << endl;
         cout << "Press 9 for Logging out" << endl;
         cout << "----------------------------------------" << endl;
-        cout << "Enter your choice" << endl;
+        cout << "Enter your choice:  ";
 
         int choice;
         cin >> choice;
