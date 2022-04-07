@@ -4,9 +4,6 @@
 // This is code for the Library Management System of the assignment given under course CS253A //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
 ///////////////////////////////
 ////        Header         ////
 ///////////////////////////////
@@ -312,7 +309,7 @@ public:
                 cout << "The following book is not available" << endl;
                 cout << "Id of the user who currently have this book - " << books[i].user << endl;
             }
-            cout << "----------------------------------------------------------------------------------------------------------"<< endl;
+            cout << "----------------------------------------------------------------------------------------------------------" << endl;
         }
         return;
     }
@@ -470,35 +467,28 @@ public:
     // Login Function makes provides the user with feature of logging in.
 
     // Very Important Feature
-    user loginCheck(string name, string pass)
+    user loginCheck(string fname, string fpass)
     {
 
         // Return object when there is an error in login
         user trash;
         trash.name = "null";
 
-        cout << users.size() << endl;
-        for (int i = 0; i < users.size(); i++)
+        int n = users.size();
+        for (int i = 0; i < n; i++)
         {
-            if (users[i].name == name)
+            if (users[i].name == fname)
             {
-                if (users[i].password == pass)
+                if (users[i].password == fpass)
                 {
                     cout << "Login Successful" << endl;
-                    return users[i];
+                    user obj;
+                    obj = users[i];
+                    return obj;
                 }
-                else
-                {
-                    cout << "Wrong Password entered" << endl;
-                    return trash;
-                }
-            }
-            else
-            {
-                cout << "Wrong username" << endl;
-                return trash;
             }
         }
+        cout << "Login Failed" << endl;
         return trash;
     }
 
@@ -532,7 +522,7 @@ public:
 
 public:
     // Function to caculate the fine amount of a book
-    user calculatFine()
+    user calculateFine()
     {
         system("cls");
         cout << "-----------------------------------------------------------------" << endl;
@@ -608,7 +598,7 @@ public:
     user u;
 
 public:
-    user calculatFine()
+    user calculateFine()
     {
         system("cls");
         cout << "-----------------------------------------------------------------" << endl;
@@ -689,7 +679,7 @@ int main()
     userdatabase ub;
     professor pt;
 
-    //Some intial users and books added.
+    // Some intial users and books added.
     {
         user t1;
         t1.name = "Umam";
@@ -699,15 +689,9 @@ int main()
 
         user t2;
         t2.name = "Vishal";
-        t2.id = "s2231";
+        t2.id = "p2231";
         t2.password = "Vishal250802";
         ub.users.push_back(t2);
-
-        user t3;
-        t3.name = "Indranil";
-        t3.id = "p1234";
-        t3.password = "CS253";
-        ub.users.push_back(t3);
 
         book b1;
         b1.title = "Mein-Kampf";
@@ -750,10 +734,8 @@ int main()
         b6.isbn = "1234560987";
         b6.publication = "DC";
         db.books.push_back(b6);
-
     }
 MainMenu:
-    system("cls");
     cout << "------------------------------------------------------" << endl;
     cout << "-----  Welcome to Library Management system ----------" << endl;
     cout << "------------------------------------------------------" << endl;
@@ -765,7 +747,7 @@ MainMenu:
     cout << "           4. Register for new User" << endl;
     cout << "           5. Exit" << endl;
     cout << "---------------------------------------------" << endl;
-    cout << "           Enter you choice :" ;
+    cout << "           Enter you choice :";
     int ch;
     cin >> ch;
     switch (ch)
@@ -785,13 +767,12 @@ MainMenu:
         string userName;
         cin >> userName;
         cout << endl;
-        cout << "Enter you Password : " ;
+        cout << "Enter you Password : ";
         cin >> userPassword;
         cout << endl;
-        
+
         // Returns object user whose login if and password matches with the given.
         user User = ub.loginCheck(userName, userPassword);
-
 
         // userIndex stores the index of the user which is logged in.
         int userIndex;
@@ -804,171 +785,179 @@ MainMenu:
             }
         }
 
-
-        //Here the trash object comes to user.
+        // Here the trash object comes to user.
         if (User.name != "null")
         {
             system("cls");
+            if (User.id[0] == 's')
+            {
+            studentModule:
+                cout << "-------------------------------------------------" << endl;
+                cout << "***************   STUDENT MENU   ****************";
+                cout << "-------------------------------------------------" << endl;
+                cout << "                  1. To search any book" << endl;
+                cout << "                  2. To check list of books currently taken" << endl;
+                cout << "                  3. To borrow a book" << endl;
+                cout << "                  4. To calculate fine for any book taken" << endl;
+                cout << "                  5. To clear fine amount for any book" << endl;
+                cout << "                  6. To see all the books" << endl;
+                cout << "                  0. Logout" << endl;
+                cout << "---------------------------------------------------------" << endl;
+                int studentChoice;
+                cin >> studentChoice;
 
-        studentModule:
-            cout << "-------------------------------------------------" << endl;
-            cout << "***************   STUDENT MENU   ****************";
-            cout << "-------------------------------------------------" << endl;
-            cout << "                  1. To search any book" << endl;
-            cout << "                  2. To check list of books currently taken" << endl;
-            cout << "                  3. To borrow a book" << endl;
-            cout << "                  4. To calculate fine for any book taken" << endl;
-            cout << "                  5. To clear fine amount for any book" << endl;
-            cout << "                  6. To see all the books" << endl;
-            cout << "                  0. Logout" << endl;
-            cout << "---------------------------------------------------------" << endl;
-            int studentChoice;
-            cin >> studentChoice;
-
-            switch (studentChoice)
-            {
-            // Working.
-            case 1:
-            {
-                system("cls");
-                db.search();
-                goto studentModule;
-                break;
-            }
-            // Working
-            case 2:
-            {
-                system("cls");
-                User = ub.users[userIndex];
-                cout << "There are currently " << (User.owned).size() << " books owned by " << User.name << endl;
-                if (User.owned.size() > 0)
+                switch (studentChoice)
                 {
-                    cout << "The books are following:" << endl;
-                    for (int i = 0; i < (User.owned).size(); i++)
-                    {
-                        cout << "Title : " << (User.owned[i].first).title << "---" << " Author : " << (User.owned[i].first).author << "---" << " ISBN : " << (User.owned[i].first).isbn << endl;
-                    }
+                // Working.
+                case 1:
+                {
+                    system("cls");
+                    db.search();
+                    goto studentModule;
+                    break;
                 }
-                cout << "----------------------------------------------" << endl;
-                goto studentModule;
-                break;
-            }
-
-            // Working
-            case 3:
-            {
-                system("cls");
-
-                book Book = db.borrow();
-                int bookIndex = 0;
-                for (int i = 0; i < db.books.size(); i++)
+                // Working
+                case 2:
                 {
-                    if (db.books[i].isbn == Book.isbn)
+                    system("cls");
+                    User = ub.users[userIndex];
+                    cout << "There are currently " << (User.owned).size() << " books owned by " << User.name << endl;
+                    if (User.owned.size() > 0)
                     {
-                        bookIndex = i;
-                        break;
-                    }
-                }
-                for (int i = 0; ub.users.size(); i++)
-                {
-                    if (ub.users[i].id == User.id)
-                    {
-                        userIndex = i;
-                        break;
-                    }
-                }
-
-                if (Book.title != "null")
-                {
-                    if (ub.users[userIndex].id[0] == 's')
-                    {
-                        if (db.books[bookIndex].available == false)
+                        cout << "The books are following:" << endl;
+                        for (int i = 0; i < (User.owned).size(); i++)
                         {
-                            cout << "Book not available" << endl;
+                            cout << "Title : " << (User.owned[i].first).title << "---"
+                                 << " Author : " << (User.owned[i].first).author << "---"
+                                 << " ISBN : " << (User.owned[i].first).isbn << endl;
                         }
-                        else
+                    }
+                    cout << "----------------------------------------------" << endl;
+                    goto studentModule;
+                    break;
+                }
+
+                // Working
+                case 3:
+                {
+                    system("cls");
+
+                    book Book = db.borrow();
+                    int bookIndex = 0;
+                    for (int i = 0; i < db.books.size(); i++)
+                    {
+                        if (db.books[i].isbn == Book.isbn)
                         {
-                            if (ub.users[userIndex].owned.size() < 5)
+                            bookIndex = i;
+                            break;
+                        }
+                    }
+                    for (int i = 0; ub.users.size(); i++)
+                    {
+                        if (ub.users[i].id == User.id)
+                        {
+                            userIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (Book.title != "null")
+                    {
+                        if (ub.users[userIndex].id[0] == 's')
+                        {
+                            if (db.books[bookIndex].available == false)
                             {
-                                ub.users[userIndex].owned.push_back({db.books[bookIndex], 0});
-                                db.books[bookIndex].available = false;
-                                db.books[bookIndex].user = ub.users[userIndex].id;
-                                cout << "Book request successful" << endl;
+                                cout << "Book not available" << endl;
                             }
                             else
                             {
-                                cout << "Student can only borrow at MAX 5 books." << endl;
+                                if (ub.users[userIndex].owned.size() < 5)
+                                {
+                                    ub.users[userIndex].owned.push_back({db.books[bookIndex], 0});
+                                    db.books[bookIndex].available = false;
+                                    db.books[bookIndex].user = ub.users[userIndex].id;
+                                    cout << "Book request successful" << endl;
+                                }
+                                else
+                                {
+                                    cout << "Student can only borrow at MAX 5 books." << endl;
+                                }
                             }
+                            goto studentModule;
+                            break;
                         }
+                        if (ub.users[userIndex].id[0] == 'p')
+                        {
+                            cout << "Wrong user" << endl;
+                        }
+                        cout << "ID wrong" << endl;
                         goto studentModule;
                         break;
                     }
-                    if (ub.users[userIndex].id[0] == 'p')
+                    else
                     {
-                        cout << "Wrong user" << endl;
+                        cout << "Wrong title entered" << endl;
+                        goto studentModule;
+                        break;
                     }
-                    cout << "ID wrong" << endl;
+                    break;
+                }
+
+                // Working
+                case 4:
+                {
+                    system("cls");
+                    student st;
+                    st.u = ub.users[userIndex];
+                    ub.users[userIndex] = st.calculateFine();
                     goto studentModule;
                     break;
                 }
-                else
+
+                case 5:
                 {
-                    cout << "Wrong title entered" << endl;
+                    system("cls");
+                    cout << "Enter the title of the book you want to clear fine amount - " << endl;
+                    string n;
+                    cin >> n;
+                    student st;
+                    st.u = ub.users[userIndex];
+                    ub.users[userIndex] = st.clearFineAmount(n);
+                    for (int i = 0; i < db.books.size(); i++)
+                    {
+                        if (db.books[i].title == n)
+                        {
+                            db.books[i].available = true;
+                        }
+                    }
                     goto studentModule;
                     break;
                 }
-                break;
-            }
 
-            // Working
-            case 4:
-            {
-                system("cls");
-                student st;
-                st.u = ub.users[userIndex];
-                ub.users[userIndex] = st.calculatFine();
-                goto studentModule;
-                break;
-            }
-
-            case 5:
-            {
-                system("cls");
-                cout << "Enter the title of the book you want to clear fine amount - " << endl;
-                string n;
-                cin >> n;
-                student st;
-                st.u = ub.users[userIndex];
-                ub.users[userIndex] = st.clearFineAmount(n);
-                for (int i = 0; i < db.books.size(); i++)
+                case 6:
                 {
-                    if (db.books[i].title == n)
-                    {
-                        db.books[i].available = true;
-                    }
+                    system("cls");
+                    db.dispAll();
+                    goto studentModule;
+                    break;
                 }
-                goto studentModule;
-                break;
-            }
 
-            case 6:{
-                system("cls");
-                db.dispAll();
-                goto studentModule;
-                break;
+                // Working
+                case 0:
+                {
+                    cout << " -------- Hope you had a good time reading ! -----------" << endl;
+                    goto MainMenu;
+                }
+                default:
+                {
+                    cout << "Wrong choice" << endl;
+                    break;
+                }
+                }
             }
-
-            // Working
-            case 0:
-            {
-                cout << " -------- Hope you had a good time reading ! -----------" << endl;
+            else{
+                cout << "Bad Login Request | Not a Student" << endl;
                 goto MainMenu;
-            }
-            default:
-            {
-                cout << "Wrong choice" << endl;
-                break;
-            }
             }
         }
 
@@ -1010,158 +999,166 @@ MainMenu:
         if (User.name != "null")
         {
             system("cls");
-
-        profModule:
-            cout << "Welcome user interface -- Professor" << endl;
-            cout << "-------------------------------------" << endl;
-            cout << "1. To search any book" << endl;
-            cout << "2. To check list of books currently taken" << endl;
-            cout << "3. To borrow a book" << endl;
-            cout << "4. To calculate fine for a borrowed book" << endl;
-            cout << "5. To clear fine amount of a particular book" << endl;
-            cout << "6. To see all the books" << endl;
-            cout << "7. To see all the users" << endl;
-            cout << "0. Logout" << endl;
-            int studentChoice;
-            cin >> studentChoice;
-            switch (studentChoice)
+            if (User.id[0] == 'p')
             {
-            case 1:
-            {
-                system("cls");
-                db.search();
-                goto profModule;
-                break;
-            }
-            case 2:
-            {
-                system("cls");
-                User = ub.users[userIndex];
-                cout << "There are currently " << (User.owned).size() << "books owned by the " << User.name << endl;
-
-                if (User.owned.size() > 0)
+            profModule:
+                cout << "---------------- Welcome user interface -- Professor --------------------" << endl;
+                cout << "--------------------------------------------------------------------------" << endl;
+                cout << "              1. To search any book" << endl;
+                cout << "              2. To check list of books currently taken" << endl;
+                cout << "              3. To borrow a book" << endl;
+                cout << "              4. To calculate fine for a borrowed book" << endl;
+                cout << "              5. To clear fine amount of a particular book" << endl;
+                cout << "              6. To see all the books" << endl;
+                cout << "              7. To see all the users" << endl;
+                cout << "              0. Logout" << endl;
+                int professorChoice;
+                cin >> professorChoice;
+                switch (professorChoice)
                 {
-                    cout << "The books are following:" << endl;
-                    for (int i = 0; i < (User.owned).size(); i++)
-                    {
-                        cout << "Title : " << (User.owned[i].first).title << "Author : " << (User.owned[i].first).author << "ISBN : " << (User.owned[i].first).isbn << endl;
-                    }
-                }
-
-                cout << "----------------------------------------------" << endl;
-                goto profModule;
-                break;
-            }
-            case 3:
-            {
-                system("cls");
-
-                book Book = db.borrow();
-                int bookIndex = 0;
-                for (int i = 0; i < db.books.size(); i++)
+                case 1:
                 {
-                    if (db.books[i].isbn == Book.isbn)
-                    {
-                        bookIndex = i;
-                        break;
-                    }
-                }
-                for (int i = 0; ub.users.size(); i++)
-                {
-                    if (ub.users[i].id == User.id)
-                    {
-                        userIndex = i;
-                        break;
-                    }
-                }
-
-                if (Book.title != "null")
-                {
-                    if (ub.users[userIndex].id[0] == 's')
-                    {
-                        cout << "Wrong User" << endl;
-                        goto MainMenu;
-                    }
-                    if (ub.users[userIndex].id[0] == 'p')
-                    {
-                        if (db.books[bookIndex].available == false)
-                        {
-                            cout << "Book not available" << endl;
-                        }
-                        else
-                        {
-                            ub.users[userIndex].owned.push_back({db.books[bookIndex], 0});
-                            db.books[bookIndex].available = false;
-                            db.books[bookIndex].user = ub.users[userIndex].id;
-                            cout << "Book request successful" << endl;
-                        }
-                    }
-                    cout << "ID wrong" << endl;
+                    system("cls");
+                    db.search();
                     goto profModule;
                     break;
                 }
-                else
+                case 2:
                 {
-                    cout << "Wrong title entered" << endl;
+                    system("cls");
+                    User = ub.users[userIndex];
+                    cout << "There are currently " << (User.owned).size() << "books owned by the " << User.name << endl;
+
+                    if (User.owned.size() > 0)
+                    {
+                        cout << "The books are following:" << endl;
+                        for (int i = 0; i < (User.owned).size(); i++)
+                        {
+                            cout << "Title : " << (User.owned[i].first).title << "Author : " << (User.owned[i].first).author << "ISBN : " << (User.owned[i].first).isbn << endl;
+                        }
+                    }
+
+                    cout << "----------------------------------------------" << endl;
                     goto profModule;
                     break;
                 }
-                break;
-            }
-
-            // Working
-            case 4:
-            {
-                system("cls");
-                professor st;
-                st.u = ub.users[userIndex];
-                ub.users[userIndex] = st.calculatFine();
-                goto profModule;
-                break;
-            }
-
-            case 5:
-            {
-                system("cls");
-                cout << "Enter the title of the book you want to clear fine amount - " << endl;
-                string n;
-                cin >> n;
-                professor st;
-                st.u = ub.users[userIndex];
-                ub.users[userIndex] = st.clearFineAmount(n);
-                for (int i = 0; i < db.books.size(); i++)
+                case 3:
                 {
-                    if (db.books[i].title == n)
+                    system("cls");
+
+                    book Book = db.borrow();
+                    int bookIndex = 0;
+                    for (int i = 0; i < db.books.size(); i++)
                     {
-                        db.books[i].available = true;
+                        if (db.books[i].isbn == Book.isbn)
+                        {
+                            bookIndex = i;
+                            break;
+                        }
                     }
+                    for (int i = 0; ub.users.size(); i++)
+                    {
+                        if (ub.users[i].id == User.id)
+                        {
+                            userIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (Book.title != "null")
+                    {
+                        if (ub.users[userIndex].id[0] == 's')
+                        {
+                            cout << "Wrong User" << endl;
+                            goto MainMenu;
+                        }
+                        if (ub.users[userIndex].id[0] == 'p')
+                        {
+                            if (db.books[bookIndex].available == false)
+                            {
+                                cout << "Book not available" << endl;
+                            }
+                            else
+                            {
+                                ub.users[userIndex].owned.push_back({db.books[bookIndex], 0});
+                                db.books[bookIndex].available = false;
+                                db.books[bookIndex].user = ub.users[userIndex].id;
+                                cout << "Book request successful" << endl;
+                            }
+                        }
+                        cout << "ID wrong" << endl;
+                        goto profModule;
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Wrong title entered" << endl;
+                        goto profModule;
+                        break;
+                    }
+                    break;
                 }
-                goto profModule;
-                break;
+
+                // Working
+                case 4:
+                {
+                    system("cls");
+                    professor st;
+                    st.u = ub.users[userIndex];
+                    ub.users[userIndex] = st.calculateFine();
+                    goto profModule;
+                    break;
+                }
+
+                case 5:
+                {
+                    system("cls");
+                    cout << "Enter the title of the book you want to clear fine amount - " << endl;
+                    string n;
+                    cin >> n;
+                    professor st;
+                    st.u = ub.users[userIndex];
+                    ub.users[userIndex] = st.clearFineAmount(n);
+                    for (int i = 0; i < db.books.size(); i++)
+                    {
+                        if (db.books[i].title == n)
+                        {
+                            db.books[i].available = true;
+                        }
+                    }
+                    goto profModule;
+                    break;
+                }
+                case 6:
+                {
+                    system("cls");
+                    db.dispAll();
+                    goto profModule;
+                    break;
+                }
+                case 7:
+                {
+                    system("cls");
+                    ub.dispAll();
+                    goto profModule;
+                    break;
+                }
+                // Working
+                case 0:
+                {
+                    cout << " -------- Hope you had a good time reading ! -----------" << endl;
+                    goto MainMenu;
+                }
+                default:
+                {
+                    cout << "Wrong choice" << endl;
+                    break;
+                }
+                }
             }
-            case 6:{
-                system("cls");
-                db.dispAll();
-                goto profModule;
-                break;
-            }
-            case 7:{
-                system("cls");
-                ub.dispAll();
-                goto profModule;
-                break;
-            }
-            // Working
-            case 0:
-            {
-                cout << " -------- Hope you had a good time reading ! -----------" << endl;
+            else{
+                cout << "Bad login Request | Not a Professor" << endl;
                 goto MainMenu;
-            }
-            default:
-            {
-                cout << "Wrong choice" << endl;
-                break;
-            }
             }
         }
         else
@@ -1342,5 +1339,3 @@ exit:
     cout << "---------------------------------------------------" << endl;
     return 0;
 }
-
-
