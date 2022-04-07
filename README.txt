@@ -91,6 +91,5 @@
     b) The id of the users must contain s at the start of the id number for students. for eg. id = s1234
     c) The id of the users must contain s at the start of the id number for professor. for eg. id = p1234
 
-    d) I have used dynamic database i.e. We need to login as Librarian and insert two three books to see the features because iniitially the vector is empty.
-
+    d) I have used dynamic database i.e. We need to login as Librarian and insert two three books to see the features because iniitially the vector is empty. for
     

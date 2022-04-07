@@ -1,3 +1,12 @@
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// This is code for the Library Management System of the assignment given under course CS253A //
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 ///////////////////////////////
 ////        Header         ////
 ///////////////////////////////
@@ -134,10 +143,8 @@ public:
         cout << "Enter the title of the book you want to update: ";
         cin >> t;
         int flag = 0;
-        cout << books.size() << endl;
         for (int i = 0; i < books.size(); i++)
         {
-            cout << books[i].title << endl;
             if (books[i].title == t)
             {
                 cout << "Enter the new title: ";
@@ -684,11 +691,10 @@ int main()
     professor pt;
 
 MainMenu:
-
-    cout << "//////////////////////////////////////////////////////" << endl;
-    cout << "Welcome to Library Management system." << endl;
-    cout << "//////////////////////////////////////////////////////" << endl;
-
+    system("cls");
+    cout << "------------------------------------------------------" << endl;
+    cout << "-----  Welcome to Library Management system ----------" << endl;
+    cout << "------------------------------------------------------" << endl;
     cout << "--------- You are welcome to our library  --------------" << endl;
     cout << "           1. Student" << endl;
     cout << "           2. Professor" << endl;
@@ -742,15 +748,15 @@ MainMenu:
             system("cls");
 
         studentModule:
-            cout << "/////////////////////////////////////////////////" << endl;
+            cout << "-------------------------------------------------" << endl;
             cout << "***************   STUDENT MENU   ****************";
-            cout << "/////////////////////////////////////////////////" << endl;
+            cout << "-------------------------------------------------" << endl;
             cout << "                  1. To search any book" << endl;
             cout << "                  2. To check list of books currently taken" << endl;
             cout << "                  3. To borrow a book" << endl;
             cout << "                  4. To calculate fine for any book taken" << endl;
             cout << "                  5. To clear fine amount for any book" << endl;
-            cout << "                  5. To see all the books" << endl;
+            cout << "                  6. To see all the books" << endl;
             cout << "                  0. Logout" << endl;
             cout << "---------------------------------------------------------" << endl;
             int studentChoice;
@@ -1131,19 +1137,19 @@ MainMenu:
         cout << endl;
         cout << "******************** ADMIN *********************" << endl;
         cout << "Welcome to user interface - Librarian" << endl;
-        cout << "Please select your choice" << endl;
-        cout << "Press 1 to add a book" << endl;
-        cout << "Press 2 to update a book" << endl;
-        cout << "Press 3 to delete a book" << endl;
-        cout << "Press 4 to search a book" << endl;
-        cout << "Press 5 to add a user" << endl;
-        cout << "Press 6 to update a user" << endl;
-        cout << "Press 7 to delete a user" << endl;
-        cout << "Press 8 to search a user" << endl;
-        cout << "Press 0 to see all books" << endl;
-        cout << "Press 11 to see all users" << endl;
-        cout << "Press 9 for Logging out" << endl;
-        cout << "----------------------------------------" << endl;
+        cout << "           Please select your choice" << endl;
+        cout << "           Press 1 to add a book" << endl;
+        cout << "           Press 2 to update a book" << endl;
+        cout << "           Press 3 to delete a book" << endl;
+        cout << "           Press 4 to search a book" << endl;
+        cout << "           Press 5 to add a user" << endl;
+        cout << "           Press 6 to update a user" << endl;
+        cout << "           Press 7 to delete a user" << endl;
+        cout << "           Press 8 to search a user" << endl;
+        cout << "           Press 0 to see all books" << endl;
+        cout << "           Press 11 to see all users" << endl;
+        cout << "           Press 9 for Logging out" << endl;
+        cout << "------------------------------------------------" << endl;
         cout << "Enter your choice:  ";
 
         int choice;
@@ -1266,8 +1272,12 @@ MainMenu:
     }
 
 exit:
+    cout << "---------------------------------------------------" << endl;
     cout << "CREATED AND CODED BY:  Mohd Umam" << endl;
     cout << "Library Management system" << endl;
     cout << "Thanks for visiting us !!" << endl;
+    cout << "---------------------------------------------------" << endl;
     return 0;
 }
+
+
