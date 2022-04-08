@@ -504,7 +504,7 @@ public:
         {
             cout << "User #" << i + 1 << endl;
             cout << "The name of the user is - " << users[i].name << endl;
-            cout << "The id of the user is - " << users[i].id;
+            cout << "The id of the user is - " << users[i].id << endl;
             cout << "----------------------------------------------------------------------------------------------------------" << endl;
         }
         return;
@@ -793,7 +793,7 @@ MainMenu:
             {
             studentModule:
                 cout << "-------------------------------------------------" << endl;
-                cout << "***************   STUDENT MENU   ****************";
+                cout << "***************   STUDENT MENU   ****************" << endl;
                 cout << "-------------------------------------------------" << endl;
                 cout << "                  1. To search any book" << endl;
                 cout << "                  2. To check list of books currently taken" << endl;
@@ -979,13 +979,12 @@ MainMenu:
 
         system("cls");
         cout << "----------- Login Page - Professor -----------" << endl;
-        cout << "----------------------------------" << endl;
-        cout << "Enter your Username : " << endl;
-        cout << "Enter you Password : " << endl;
-
+        cout << "----------------------------------------------" << endl;
         string userPassword;
         string userName;
+        cout << "Enter your Username : " << endl;
         cin >> userName;
+        cout << "Enter you Password : " << endl;
         cin >> userPassword;
         user User = ub.loginCheck(userName, userPassword); // stores the user.
         int userIndex;
