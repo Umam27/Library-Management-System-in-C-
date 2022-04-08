@@ -39,6 +39,8 @@
         - member variables : u (object of class).
         - member functions : calculateFine, clearFineAmount.
 
+* I have also used the concept of GOTO nesting to shift from interfaces
+
 #### Functions
 
 * requestBook : this function takes input - a user and a book and make changes in their variables as needed.
@@ -96,5 +98,8 @@
 * The id of the users must contain s at the start of the id number for students. for eg. id = s1234
 * The id of the users must contain s at the start of the id number for professor. for eg. id = p1234
 * I have used dynamic database i.e. We need to login as Librarian and insert two three books to see the features because iniitially the vector is empty.
+
+
+##### I hope you all will like it
 
     
