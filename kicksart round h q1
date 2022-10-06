@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define lli long long int
+
+
+lli solvesisti()
+{
+    lli i,j,k,n,a,b,c,d,ans=0,q,sum=0,x,m,start,end,st1,end1,fl,count;
+    cin>>n>>k>>x>>d;
+    vector<vector<lli>>vv;
+    cin>>m;
+    for(i=1;i<=m;i++)
+    {
+        cin>>a>>b>>c;
+        vv.push_back({a,b,c});
+    }
+    ans=m;
+    for(i=0;i<=d-x;i++)
+    {
+       start=i;
+       end=i+x-1;
+      
+       lli count=0;
+       map<lli,lli>mm;
+       for(j=0;j<m;j++)
+       {
+          a=vv[j][0];
+          st1=vv[j][1];
+          end1=vv[j][2];
+          if(st1>end||end1<=start)
+          fl=1;
+          else
+          mm[a]++;
+       }
+       vector<lli>aa;
+       for(auto it:mm)
+       {
+        //    cout<<it.first<<" "<<it.second<<"\n";
+           aa.push_back(it.second);
+       }
+       sort(aa.begin(),aa.end());
+       lli si=aa.size();
+       lli bb=n-si;
+       for(j=0;j<k-bb;j++)
+       count+=aa[j];
+       ans=min(ans,count);
+    }
+return ans;
+    
+}
+int32_t main(){
+
+
+
+
+
+lli jj,pp=1;
+cin>>pp;
+for(jj=1;jj<=pp;jj++){
+lli fl;
+fl=solvesisti();
+cout<<"Case #"<<jj<<": "<<fl<<"\n";
+}
+return 0;
+}
